@@ -1,0 +1,10 @@
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\bin\Hotel.Service.dll.config
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\bin\Hotel.Service.dll
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\bin\Hotel.Service.pdb
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\obj\Debug\Hotel.Service.csprojResolveAssemblyReference.cache
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\obj\Debug\Hotel.Service.dll
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\obj\Debug\Hotel.Service.pdb
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\bin\Hotel.Entity.dll
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\bin\Hotel.Repository.dll
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\bin\Hotel.Entity.pdb
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Service\bin\Hotel.Repository.pdb

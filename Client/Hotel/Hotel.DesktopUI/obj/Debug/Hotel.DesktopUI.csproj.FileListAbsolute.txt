@@ -1,0 +1,9 @@
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Client\Hotel\Hotel.DesktopUI\bin\Debug\Hotel.DesktopUI.exe
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Client\Hotel\Hotel.DesktopUI\bin\Debug\Hotel.DesktopUI.exe.config
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Client\Hotel\Hotel.DesktopUI\obj\Debug\Hotel.DesktopUI.MainForm.resources
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Client\Hotel\Hotel.DesktopUI\obj\Debug\Hotel.DesktopUI.Properties.Resources.resources
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Client\Hotel\Hotel.DesktopUI\obj\Debug\Hotel.DesktopUI.csproj.GenerateResource.Cache
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Client\Hotel\Hotel.DesktopUI\obj\Debug\Hotel.DesktopUI.exe
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Client\Hotel\Hotel.DesktopUI\obj\Debug\Hotel.DesktopUI.pdb
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Client\Hotel\Hotel.DesktopUI\bin\Debug\Hotel.DesktopUI.pdb
+C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Client\Hotel\Hotel.DesktopUI\obj\Debug\Hotel.DesktopUI.csprojResolveAssemblyReference.cache
