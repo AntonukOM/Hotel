@@ -3,6 +3,7 @@ using Hotel.Service.DTOs;
 using System.Configuration;
 using Hotel.Repository;
 using Hotel.Repository.Sql;
+using Hotel.Entity;
 using System;
 
 namespace Hotel.Service
@@ -13,8 +14,8 @@ namespace Hotel.Service
     {
         public List<ClientDTO> GetClients()
         {
-            string cs = ConfigurationManager.ConnectionStrings["HotelServiceDB"].ConnectionString;
-            IClientRepository repository = new ClientRepository(cs);
+            string connectionString = ConfigurationManager.ConnectionStrings["HotelServiceDB"].ConnectionString;
+            IClientRepository repository = new ClientRepository(connectionString);
             var clients = repository.GetClients();
             var clientsDTO = new List<ClientDTO>();
             foreach (var client in clients)
@@ -48,11 +49,11 @@ namespace Hotel.Service
             return hotelDTO;
         }
 
-        public List<RoomDTO> GetRooms()
+        public List<RoomDTO> GetRooms(int hotelId)
         {
             string cs = ConfigurationManager.ConnectionStrings["HotelServiceDB"].ConnectionString;
             IRoomRepository repository = new RoomRepository(cs);
-            var rooms = repository.GetRooms();
+            var rooms = repository.GetRooms(hotelId);
             var roomDTO = new List<RoomDTO>();
             foreach (var room in rooms)
             {
@@ -61,31 +62,55 @@ namespace Hotel.Service
                     Id = room.Id,
                     ClientId = room.ClientId,
                     HotelId = room.HotelId,
-                    ReservationBegin = room.ReservationBegin,
-                    ReservationEnd = room.ReservationEnd,
+                    Name = room.Name,
                     Approved = room.Approved
                 });
-            }           
+            }
             return roomDTO;
         }
 
-        public void ReservRoom(ClientDTO client, HotelDTO hotel, RoomDTO room)
+        public int GetHotelId(string hotelName)
         {
-            List<ClientDTO> clientsList = GetClients();
-            List<HotelDTO> hotelList = GetHotels();
-            List<RoomDTO> roomList = GetRooms();
+            string connectionString = ConfigurationManager.ConnectionStrings["HotelServiceDB"].ConnectionString;
+            IHotelRepository repository = new HotelRepository(connectionString);
+            int hotelId = repository.HotelId(hotelName);            
+            return hotelId;
+        }
 
-            clientsList.Add(client);
+        public int GetClientId(string email)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["HotelServiceDB"].ConnectionString;
+            IClientRepository repository = new ClientRepository(connectionString);
+            int clientId = repository.ClientId(email);
+            return clientId;
+        }
 
-            //search room in a hotel
-            RoomDTO r = roomList.Find(x => room.HotelId == hotel.Id);
+        public void InsertClient(ClientDTO clientDTO)
+        {
+            var client = new Client
+            {
+                FirstName = clientDTO.FirstName,
+                LastName = clientDTO.LastName,
+                Email = clientDTO.Email,
+                Phone = clientDTO.Phone
+            };
+            string connectionString = ConfigurationManager.ConnectionStrings["HotelServiceDB"].ConnectionString;
+            IClientRepository repository = new ClientRepository(connectionString);
+            repository.Insert(client);
+        }
 
-            //set clientId into free room
-            r.ClientId = client.Id;
-            r.Approved = true;
-
-            //save changes
-            room = r;
+        public void InsertRoom(RoomDTO roomDTO)
+        {
+            var room = new Room
+            {
+                ClientId = roomDTO.ClientId,
+                HotelId = roomDTO.HotelId,
+                Name = roomDTO.Name,
+                Approved = roomDTO.Approved
+            };
+            string connectionString = ConfigurationManager.ConnectionStrings["HotelServiceDB"].ConnectionString;
+            IRoomRepository repository = new RoomRepository(connectionString);
+            repository.Insert(room);
         }
     }
 }

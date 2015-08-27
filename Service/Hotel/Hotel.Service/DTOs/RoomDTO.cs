@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace Hotel.Service.DTOs
 {
@@ -13,9 +12,7 @@ namespace Hotel.Service.DTOs
         [DataMember]
         public int HotelId { get; set; }
         [DataMember]
-        public DateTime ReservationBegin { get; set; }
-        [DataMember]
-        public DateTime ReservationEnd { get; set; }
+        public string Name { get; set; }
         [DataMember]
         public bool Approved { get; set; }
     }

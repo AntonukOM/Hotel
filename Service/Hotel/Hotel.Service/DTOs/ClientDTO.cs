@@ -14,6 +14,6 @@ namespace Hotel.Service.DTOs
         [DataMember]
         public string Email { get; set; }
         [DataMember]
-        public string Phone { get; set; }           
+        public string Phone { get; set; }
     }
 }

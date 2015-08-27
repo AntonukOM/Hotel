@@ -1,9 +1,5 @@
-﻿using System;
+﻿using Hotel.Entity;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hotel.Entity;
 using System.Data.SqlClient;
 
 namespace Hotel.Repository.Sql
@@ -39,6 +35,28 @@ namespace Hotel.Repository.Sql
                             sections.Add(hotel);
                         }
                         return sections;
+                    }
+                }
+            }
+        }
+
+        public int HotelId(string hotelName)
+        {
+            using (var connection = new SqlConnection(this._cs))
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = "SELECT Id FROM Hotel WHERE Name = \'" + hotelName + "\'";
+                    using (var reader = command.ExecuteReader())
+                    {
+                        int id = 0;
+                        while (reader.Read())
+                        {                            
+                            id = (int)reader["Id"];
+                        }
+                        return id;
                     }
                 }
             }

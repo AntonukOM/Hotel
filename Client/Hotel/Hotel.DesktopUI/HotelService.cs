@@ -176,9 +176,7 @@ namespace Hotel.Service.DTOs
         
         private int IdField;
         
-        private System.DateTime ReservationBeginField;
-        
-        private System.DateTime ReservationEndField;
+        private string NameField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
@@ -245,28 +243,15 @@ namespace Hotel.Service.DTOs
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime ReservationBegin
+        public string Name
         {
             get
             {
-                return this.ReservationBeginField;
+                return this.NameField;
             }
             set
             {
-                this.ReservationBeginField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime ReservationEnd
-        {
-            get
-            {
-                return this.ReservationEndField;
-            }
-            set
-            {
-                this.ReservationEndField = value;
+                this.NameField = value;
             }
         }
     }
@@ -277,12 +262,6 @@ namespace Hotel.Service.DTOs
 [System.ServiceModel.ServiceContractAttribute(ConfigurationName="IHotelService")]
 public interface IHotelService
 {
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/ReservRoom", ReplyAction="http://tempuri.org/IHotelService/ReservRoomResponse")]
-    void ReservRoom(Hotel.Service.DTOs.ClientDTO client, Hotel.Service.DTOs.HotelDTO hotel, Hotel.Service.DTOs.RoomDTO room);
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/ReservRoom", ReplyAction="http://tempuri.org/IHotelService/ReservRoomResponse")]
-    System.Threading.Tasks.Task ReservRoomAsync(Hotel.Service.DTOs.ClientDTO client, Hotel.Service.DTOs.HotelDTO hotel, Hotel.Service.DTOs.RoomDTO room);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetClients", ReplyAction="http://tempuri.org/IHotelService/GetClientsResponse")]
     Hotel.Service.DTOs.ClientDTO[] GetClients();
@@ -297,10 +276,34 @@ public interface IHotelService
     System.Threading.Tasks.Task<Hotel.Service.DTOs.HotelDTO[]> GetHotelsAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetRooms", ReplyAction="http://tempuri.org/IHotelService/GetRoomsResponse")]
-    Hotel.Service.DTOs.RoomDTO[] GetRooms();
+    Hotel.Service.DTOs.RoomDTO[] GetRooms(int hotelId);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetRooms", ReplyAction="http://tempuri.org/IHotelService/GetRoomsResponse")]
-    System.Threading.Tasks.Task<Hotel.Service.DTOs.RoomDTO[]> GetRoomsAsync();
+    System.Threading.Tasks.Task<Hotel.Service.DTOs.RoomDTO[]> GetRoomsAsync(int hotelId);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetHotelId", ReplyAction="http://tempuri.org/IHotelService/GetHotelIdResponse")]
+    int GetHotelId(string hotelName);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetHotelId", ReplyAction="http://tempuri.org/IHotelService/GetHotelIdResponse")]
+    System.Threading.Tasks.Task<int> GetHotelIdAsync(string hotelName);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetClientId", ReplyAction="http://tempuri.org/IHotelService/GetClientIdResponse")]
+    int GetClientId(string email);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetClientId", ReplyAction="http://tempuri.org/IHotelService/GetClientIdResponse")]
+    System.Threading.Tasks.Task<int> GetClientIdAsync(string email);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/InsertClient", ReplyAction="http://tempuri.org/IHotelService/InsertClientResponse")]
+    void InsertClient(Hotel.Service.DTOs.ClientDTO client);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/InsertClient", ReplyAction="http://tempuri.org/IHotelService/InsertClientResponse")]
+    System.Threading.Tasks.Task InsertClientAsync(Hotel.Service.DTOs.ClientDTO client);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/InsertRoom", ReplyAction="http://tempuri.org/IHotelService/InsertRoomResponse")]
+    void InsertRoom(Hotel.Service.DTOs.RoomDTO room);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/InsertRoom", ReplyAction="http://tempuri.org/IHotelService/InsertRoomResponse")]
+    System.Threading.Tasks.Task InsertRoomAsync(Hotel.Service.DTOs.RoomDTO room);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -337,16 +340,6 @@ public partial class HotelServiceClient : System.ServiceModel.ClientBase<IHotelS
     {
     }
     
-    public void ReservRoom(Hotel.Service.DTOs.ClientDTO client, Hotel.Service.DTOs.HotelDTO hotel, Hotel.Service.DTOs.RoomDTO room)
-    {
-        base.Channel.ReservRoom(client, hotel, room);
-    }
-    
-    public System.Threading.Tasks.Task ReservRoomAsync(Hotel.Service.DTOs.ClientDTO client, Hotel.Service.DTOs.HotelDTO hotel, Hotel.Service.DTOs.RoomDTO room)
-    {
-        return base.Channel.ReservRoomAsync(client, hotel, room);
-    }
-    
     public Hotel.Service.DTOs.ClientDTO[] GetClients()
     {
         return base.Channel.GetClients();
@@ -367,13 +360,53 @@ public partial class HotelServiceClient : System.ServiceModel.ClientBase<IHotelS
         return base.Channel.GetHotelsAsync();
     }
     
-    public Hotel.Service.DTOs.RoomDTO[] GetRooms()
+    public Hotel.Service.DTOs.RoomDTO[] GetRooms(int hotelId)
     {
-        return base.Channel.GetRooms();
+        return base.Channel.GetRooms(hotelId);
     }
     
-    public System.Threading.Tasks.Task<Hotel.Service.DTOs.RoomDTO[]> GetRoomsAsync()
+    public System.Threading.Tasks.Task<Hotel.Service.DTOs.RoomDTO[]> GetRoomsAsync(int hotelId)
     {
-        return base.Channel.GetRoomsAsync();
+        return base.Channel.GetRoomsAsync(hotelId);
+    }
+    
+    public int GetHotelId(string hotelName)
+    {
+        return base.Channel.GetHotelId(hotelName);
+    }
+    
+    public System.Threading.Tasks.Task<int> GetHotelIdAsync(string hotelName)
+    {
+        return base.Channel.GetHotelIdAsync(hotelName);
+    }
+    
+    public int GetClientId(string email)
+    {
+        return base.Channel.GetClientId(email);
+    }
+    
+    public System.Threading.Tasks.Task<int> GetClientIdAsync(string email)
+    {
+        return base.Channel.GetClientIdAsync(email);
+    }
+    
+    public void InsertClient(Hotel.Service.DTOs.ClientDTO client)
+    {
+        base.Channel.InsertClient(client);
+    }
+    
+    public System.Threading.Tasks.Task InsertClientAsync(Hotel.Service.DTOs.ClientDTO client)
+    {
+        return base.Channel.InsertClientAsync(client);
+    }
+    
+    public void InsertRoom(Hotel.Service.DTOs.RoomDTO room)
+    {
+        base.Channel.InsertRoom(room);
+    }
+    
+    public System.Threading.Tasks.Task InsertRoomAsync(Hotel.Service.DTOs.RoomDTO room)
+    {
+        return base.Channel.InsertRoomAsync(room);
     }
 }

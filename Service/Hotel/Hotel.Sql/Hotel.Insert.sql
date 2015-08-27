@@ -18,11 +18,18 @@ SET IDENTITY_INSERT Hotel OFF;
 
 
 SET IDENTITY_INSERT Room ON;
-INSERT INTO Room(Id, ClientId, HotelId, ReservationBegin, ReservationEnd, ReservationStatus)
+INSERT INTO Room(Id, ClientId, HotelId, Name, ReservationStatus)
 VALUES
-	(1, 1, 1, '2015-09-19', '2015-09-21', 1),
-	(2, 2, 1, '2015-09-24', '2015-09-25', 1),
-	(3, 3, 1, '2015-09-19', '2015-09-26', 1),
-	(4, NULL, 1, '2015-09-19', '2015-09-26', 0),
-	(5, NULL, 2, '2015-09-19', '2015-09-26', 0);
+	(1, 1, 1, '101', 1),
+	(2, 2, 1, '102', 1),
+	(3, 3, 1, '103', 1),
+	(4, 1, 1, '104', 0),
+	(5, 2, 2, '101', 0),
+	(6, 3, 2, '102', 1),
+	(7, 1, 2, '103', 0),
+	(8, 1, 3, '101', 1),
+	(9, 2, 3, '102', 0),
+	(10, 3, 3, '103', 0);
 SET IDENTITY_INSERT Room OFF;
+
+SELECT * FROM Room

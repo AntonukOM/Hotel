@@ -21,10 +21,9 @@ CREATE TABLE Hotel
 CREATE TABLE Room
 (
 	Id INT NOT NULL IDENTITY(1, 1),
-	ClientId INT NULL,
+	ClientId INT NOT NULL,
 	HotelId INT NOT NULL,
-	ReservationBegin DATE NOT NULL,
-	ReservationEnd DATE NOT NULL,
+	Name NVARCHAR(32) NOT NULL,
 	ReservationStatus BIT NOT NULL
 	CONSTRAINT PK_Room_Id PRIMARY KEY(Id),
 

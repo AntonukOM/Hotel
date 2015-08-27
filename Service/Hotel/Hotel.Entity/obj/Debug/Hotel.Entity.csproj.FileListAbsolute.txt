@@ -1,4 +1,0 @@
-C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Entity\bin\Debug\Hotel.Entity.dll
-C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Entity\bin\Debug\Hotel.Entity.pdb
-C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Entity\obj\Debug\Hotel.Entity.dll
-C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Hotel\Service\Hotel\Hotel.Entity\obj\Debug\Hotel.Entity.pdb
